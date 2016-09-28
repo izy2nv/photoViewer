@@ -16,58 +16,62 @@
   <link rel="stylesheet" href="Stylesheet/index.css">
 </head>
 <body ng-controller = "IndexController">
-  <header class="col-md-12 col-sm-12 searchDiv">
-    <form class="col-md-2 col-md-offset-5 col-sm-offset-4 col-sm-4">
-      <input required type="text" ng-model = "param" placeholder="{{placeholder}}"/>
-      <button ng-click="searchImg()">Search</button>
-    </form>
-    <div class="col-md-12 col-sm-12 dateSearchDiv" ng-show="showAllPhotos">
-      <div class="col-md-5 col-md-offset-3 col-sm-7 col-sm-offset-1">{{filter}}
-        <label for="Start Date"></label>
-        <input type="text" id="from" ng-model="minDate" placeholder="{{minDateSearch}}" />
-        <label for="End Date"></label>
-        <input type="text" id="to" name="to" ng-model="maxDate" placeholder="{{maxDateSearch}}" />
-        <button type="button" ng-click="filterByDate(minDate,maxDate)">Enter</button>
+  <div id="container">
+    <header class="col-md-12 col-sm-12 searchDiv">
+      <form class="col-md-2 col-md-offset-5 col-sm-offset-4 col-sm-4">
+        <input required type="text" ng-model = "param" placeholder="{{placeholder}}"/>
+        <button ng-click="searchImg()">Search</button>
+      </form>
+      <div class="col-md-12 col-sm-12 dateSearchDiv" ng-show="showAllPhotos">
+        <div class="col-md-5 col-md-offset-3 col-sm-7 col-sm-offset-1">{{filter}}
+          <label for="Start Date"></label>
+          <input type="text" id="from" ng-model="minDate" placeholder="{{minDateSearch}}" />
+          <label for="End Date"></label>
+          <input type="text" id="to" name="to" ng-model="maxDate" placeholder="{{maxDateSearch}}" />
+          <button type="button" ng-click="filterByDate(minDate,maxDate)">Enter</button>
+        </div>
+        <div class="col-md-2 col-sm-2 sortDiv">{{sort}}
+          <select ng-model="sortOrder">
+            <option value="server">Owner</option>
+            <option value="title" ng-model="title">Title</option>
+          </select>
+        </div>
       </div>
-      <div class="col-md-2 col-sm-2 sortDiv">{{sort}}
-        <select ng-model="sortOrder">
-          <option value="server">Owner</option>
-          <option value="title" ng-model="title">Title</option>
-        </select>
+    </header>
+    <div class="modal col-md-10 col-md-offset-1" ng-show="showModal">
+      <div class="modal-body height-controller enable-zoom" id="modal-body">
+        <img class="col-md-offset-3"
+        alt="Selected Photo" src = "https://farm{{selectedPhotoFarm}}.staticflickr.com/{{selectedPhotoServer}}/{{selectedPhotoId}}_{{selectedPhotoSecret}}.jpg" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="closeImage()">Close</button>
       </div>
     </div>
-  </header>
-  <div class="modal col-md-10 col-md-offset-1" ng-show="showModal">
-    <div class="modal-body height-controller enable-zoom" id="modal-body">
-      <img class="col-md-offset-3"
-      src = "https://farm{{selectedPhotoFarm}}.staticflickr.com/{{selectedPhotoServer}}/{{selectedPhotoId}}_{{selectedPhotoSecret}}.jpg" />
+    <div class="col-md-6 col-md-offset-3 tableDiv">
+      <table class="table col-md-12">
+        <thead>
+          <tr ng-show="showAllPhotos">
+            <th class="headerCol">Title</th>
+            <th class="imgCol headerCol">Photo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = "returnedPhoto in returnedPhotos | orderBy:sortOrder">
+            <td>{{returnedPhoto.title}}</td>
+            <td>
+              <img class="img"
+              alt="Searched Photo" src="https://farm{{returnedPhoto.farm}}.staticflickr.com/{{returnedPhoto.server}}/{{returnedPhoto.id}}_{{returnedPhoto.secret}}.jpg" />
+              <button class="col-md-offset-4 preview btn btn-primary btn-sm" id="{{returnedPhoto.id}}" type="button" ng-click="previewImg($event)">
+                Preview
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-warning" type="button" ng-click="closeImage()">Close</button>
-    </div>
+    <div class="modal-backdrop fade in" ng-show="showModal"></div>
+    <div class="clearfooter"></div>
   </div>
-  <div class="col-md-6 col-md-offset-3 tableDiv">
-    <table class="table col-md-12">
-      <thead>
-        <tr ng-show="showAllPhotos">
-          <th class="headerCol">Title</th>
-          <th class="imgCol headerCol">Photo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat = "returnedPhoto in returnedPhotos | orderBy:sortOrder">
-          <td>{{returnedPhoto.title}}</td>
-          <td>
-            <img class="img" src="https://farm{{returnedPhoto.farm}}.staticflickr.com/{{returnedPhoto.server}}/{{returnedPhoto.id}}_{{returnedPhoto.secret}}.jpg" />
-            <button class="col-md-offset-4 preview btn btn-primary btn-sm"
-            id="{{returnedPhoto.id}}" type="button" ng-click="previewImg($event)">Preview
-          </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="modal-backdrop fade in" ng-show="showModal"></div>
   <footer class="col-md-12 col-sm-12">
     <p>&copy; {{footerMsg}}</p>
   </footer>
@@ -88,6 +92,6 @@
       maxDate: new Date()
     });
   });
- </script>
+  </script>
 </body>
 </html>

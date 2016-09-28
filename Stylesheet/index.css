@@ -1,5 +1,6 @@
-body {
+body, html {
   background: #f6f6f6;
+  height: 100%;
 }
 
 .imgCol {
@@ -10,7 +11,7 @@ body {
   border-bottom: none !important;
 }
 
-.searchDiv, footer {
+.searchDiv {
   background-color: #212124;
   position: fixed;
   z-index: 100;
@@ -23,7 +24,7 @@ body {
   color: #ffffff;
 }
 
-.dateSearchDiv input, .dateSearchDiv button {
+.dateSearchDiv input, .dateSearchDiv button, .sortDiv select {
   color: #000000;
 }
 
@@ -33,7 +34,7 @@ body {
 
 .tableDiv {
   margin-top: 6%;
-  min-height: 49.8em;
+  min-height: 50.8em;
 }
 
 .modal {
@@ -71,7 +72,20 @@ body {
   z-index: 500 !important;
 }
 
+#container {
+  min-height: 100%;
+  margin-bottom: -90px;
+  position: relative;
+}
+
+.clearfooter {
+  height: 90px;
+  clear: both;
+}
+
 footer {
-  margin: auto;
+  background-color: #212124;
+  height: 90px;
+  position: relative;
   color: #ffffff;
 }
