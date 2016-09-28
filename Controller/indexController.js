@@ -1,5 +1,5 @@
 (function (){
-  app.controller("IndexController",function($scope, $http) {
+  app.controller("IndexController",function($scope, httpCall) {
     $scope.placeholder = "Search Photos";
     $scope.filter = "Search by Date Taken ";
     $scope.sort = "Sort by :";
@@ -13,11 +13,9 @@
       } else {
         $scope.showAllPhotos = true;
         var searchUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags="+$scope.param+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
-        $http.jsonp(searchUrl).then(function(response) {
-          $scope.returnedPhotos = response.data.photos.photo;
-          returnedObj = response.data.photos.photo;
-        }).catch(function(error) {
-          console.log(error);
+        httpCall.getDataQuery(searchUrl).then(function(response){
+          $scope.returnedPhotos = response.photos.photo;
+          returnedObj = response.photos.photo;
         });
       }
     };
@@ -25,9 +23,9 @@
       $scope.minDate = minDate;
       $scope.maxDate = maxDate;
       var filterUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags=all&min_taken_date="+$scope.minDate+"&max_taken_date="+$scope.maxDate+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
-      $http.jsonp(filterUrl).then(function(response) {
-        $scope.returnedPhotos = response.data.photos.photo;
-        returnedObj = response.data.photos.photo;
+      httpCall.getDataQuery(filterUrl).then(function(response){
+        $scope.returnedPhotos = response.photos.photo;
+        returnedObj = response.photos.photo;
       });
     };
     $scope.previewImg = function($event) {
