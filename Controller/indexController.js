@@ -43,6 +43,30 @@
         }
       }
     };
+    $scope.displayPrevImg = function() {
+      var modalImg = document.getElementsByClassName("modalPhoto");
+      var modalImgId = modalImg[0].id;
+      for (var i = 0; i < returnedObj.length; i++) {
+        if (modalImgId === returnedObj[i].id) {
+          $scope.selectedPhotoId = returnedObj[i-1].id;
+          $scope.selectedPhotoSecret = returnedObj[i-1].secret;
+          $scope.selectedPhotoFarm = returnedObj[i-1].farm;
+          $scope.selectedPhotoServer = returnedObj[i-1].server;
+        }
+      }
+    };
+    $scope.displayNextImg = function() {
+      var modalImg = document.getElementsByClassName("modalPhoto");
+      var modalImgId = modalImg[0].id;
+      for (var i = 0; i < returnedObj.length; i++) {
+        if (modalImgId === returnedObj[i].id) {
+          $scope.selectedPhotoId = returnedObj[i+1].id;
+          $scope.selectedPhotoSecret = returnedObj[i+1].secret;
+          $scope.selectedPhotoFarm = returnedObj[i+1].farm;
+          $scope.selectedPhotoServer = returnedObj[i+1].server;
+        }
+      }
+    };
     $scope.closeImage = function() {
       $scope.showModal = false;
     };
