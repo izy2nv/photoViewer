@@ -41,7 +41,7 @@
     <div class="modal col-md-10 col-md-offset-1" ng-show="showModal">
       <div class="modal-body height-controller enable-zoom" id="modal-body">
         <img src = "https://farm{{selectedPhotoFarm}}.staticflickr.com/{{selectedPhotoServer}}/{{selectedPhotoId}}_{{selectedPhotoSecret}}.jpg"
-        class="col-md-offset-3" alt="Selected Photo"  />
+        class="col-md-offset-3" alt="Selected Photo" title="{{selectedPhotoTitle}}" />
       </div>
       <div class="modal-footer">
         <button class="btn btn-warning" type="button" ng-click="closeImage()">Close</button>

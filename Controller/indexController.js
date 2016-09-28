@@ -8,13 +8,14 @@
     $scope.footerMsg = "All rights reserved.";
     $scope.preview = "Click to Preview";
     var returnedObj;
+    var url;
     $scope.searchImg = function(param) {
       if ($scope.param === undefined) {
         return;
       } else {
         $scope.showAllPhotos = true;
-        var searchUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags="+$scope.param+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
-        httpCall.getDataQuery(searchUrl).then(function(response){
+        url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags="+$scope.param+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
+        httpCall.getDataQuery(url).then(function(response){
           $scope.returnedPhotos = response.photos.photo;
           returnedObj = response.photos.photo;
         });
@@ -23,8 +24,8 @@
     $scope.filterByDate = function(minDate, maxDate) {
       $scope.minDate = minDate;
       $scope.maxDate = maxDate;
-      var filterUrl = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags=all&min_taken_date="+$scope.minDate+"&max_taken_date="+$scope.maxDate+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
-      httpCall.getDataQuery(filterUrl).then(function(response){
+      var url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags=all&min_taken_date="+$scope.minDate+"&max_taken_date="+$scope.maxDate+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
+      httpCall.getDataQuery(url).then(function(response){
         $scope.returnedPhotos = response.photos.photo;
         returnedObj = response.photos.photo;
       });
@@ -38,6 +39,7 @@
           $scope.selectedPhotoSecret = returnedObj[i].secret;
           $scope.selectedPhotoFarm = returnedObj[i].farm;
           $scope.selectedPhotoServer = returnedObj[i].server;
+          $scope.selectedPhotoTitle = returnedObj[i].title;
         }
       }
     };
