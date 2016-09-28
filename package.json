@@ -1,8 +1,8 @@
 {
-  "name": "ImageViewer",
+  "name": "PhotoViewer",
   "version": "1.0.0",
   "description": "",
-  "repository": "git@github.com:izy2nv/imageViewerApp.git",
+  "repository": "git@github.com:izy2nv/photoViewer.git",
   "main": "app.js",
   "scripts": {
     "start": "gulp"
