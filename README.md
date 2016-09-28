@@ -1,4 +1,4 @@
-# imageViewerApp
+# Photo Viewer
 
 Steps to run this app:
 1.	Clone the repo https://github.com/izy2nv/photoViewer.git
