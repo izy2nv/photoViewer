@@ -12,5 +12,5 @@
     };
   };
   var module = angular.module("app");
-  module.factory("httpCall", httpCall); //dis registers the httpCall custom service with the app module.
+  module.factory("httpCall", httpCall); //this registers the httpCall custom service with the app module.
 }());
