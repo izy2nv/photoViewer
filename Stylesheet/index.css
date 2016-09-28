@@ -24,6 +24,10 @@ body, html {
   color: #ffffff;
 }
 
+.sortDiv {
+  margin-left: -1.5em;
+}
+
 .dateSearchDiv input, .dateSearchDiv button, .sortDiv select {
   color: #000000;
 }
@@ -48,6 +52,10 @@ body, html {
 .modal-body img {
   height: 500px !important;
   width: 50% !important;
+}
+
+.img {
+  cursor: pointer;
 }
 
 @media (min-width: 992px) {

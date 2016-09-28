@@ -40,8 +40,8 @@
     </header>
     <div class="modal col-md-10 col-md-offset-1" ng-show="showModal">
       <div class="modal-body height-controller enable-zoom" id="modal-body">
-        <img class="col-md-offset-3"
-        alt="Selected Photo" src = "https://farm{{selectedPhotoFarm}}.staticflickr.com/{{selectedPhotoServer}}/{{selectedPhotoId}}_{{selectedPhotoSecret}}.jpg" />
+        <img src = "https://farm{{selectedPhotoFarm}}.staticflickr.com/{{selectedPhotoServer}}/{{selectedPhotoId}}_{{selectedPhotoSecret}}.jpg"
+        class="col-md-offset-3" alt="Selected Photo"  />
       </div>
       <div class="modal-footer">
         <button class="btn btn-warning" type="button" ng-click="closeImage()">Close</button>
@@ -59,11 +59,8 @@
           <tr ng-repeat = "returnedPhoto in returnedPhotos | orderBy:sortOrder">
             <td>{{returnedPhoto.title}}</td>
             <td>
-              <img class="img"
-              alt="Searched Photo" src="https://farm{{returnedPhoto.farm}}.staticflickr.com/{{returnedPhoto.server}}/{{returnedPhoto.id}}_{{returnedPhoto.secret}}.jpg" />
-              <button class="col-md-offset-4 preview btn btn-primary btn-sm" id="{{returnedPhoto.id}}" type="button" ng-click="previewImg($event)">
-                Preview
-              </button>
+              <img src="https://farm{{returnedPhoto.farm}}.staticflickr.com/{{returnedPhoto.server}}/{{returnedPhoto.id}}_{{returnedPhoto.secret}}.jpg"
+              class="img" id="{{returnedPhoto.id}}" alt="Searched Photo" ng-click="previewImg($event)" title="{{preview}}"  />
             </td>
           </tr>
         </tbody>

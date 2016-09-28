@@ -6,6 +6,7 @@
     $scope.minDateSearch = "From  YYYY-MM-DD";
     $scope.maxDateSearch = "To  YYYY-MM-DD";
     $scope.footerMsg = "All rights reserved.";
+    $scope.preview = "Click to Preview";
     var returnedObj;
     $scope.searchImg = function(param) {
       if ($scope.param === undefined) {
