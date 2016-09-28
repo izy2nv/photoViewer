@@ -1,0 +1,22 @@
+{
+  "name": "ImageViewer",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "git@github.com:izy2nv/imageViewerApp.git",
+  "main": "app.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "Israel Esan",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "connect": "^3.4.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.1.0",
+    "http": "0.0.0",
+    "mongoose": "^4.5.9"
+  }
+}

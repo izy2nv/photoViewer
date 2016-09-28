@@ -1,0 +1,77 @@
+body {
+  background: #f6f6f6;
+}
+
+.imgCol {
+  float: right;
+}
+
+.headerCol {
+  border-bottom: none !important;
+}
+
+.searchDiv, footer {
+  background-color: #212124;
+  position: fixed;
+  z-index: 100;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.dateSearchDiv {
+  margin-top: 1%;
+  color: #ffffff;
+}
+
+.dateSearchDiv input, .dateSearchDiv button {
+  color: #000000;
+}
+
+#from, #to {
+  text-align: center;
+}
+
+.tableDiv {
+  margin-top: 6%;
+  min-height: 49.8em;
+}
+
+.modal {
+  top: 110px;
+  z-index: 1000;
+  display: block;
+  background: #212124;
+  height: 600px !important;
+}
+
+.modal-body img {
+  height: 500px !important;
+  width: 50% !important;
+}
+
+@media (min-width: 992px) {
+  .img {
+    height: 200px;
+    width: 190px;
+    float: right;
+    margin-bottom: 2.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .tableDiv {
+    min-height: 66em;
+  }
+  .searchDiv {
+    margin-top: -3em;
+  }
+}
+
+.modal-backdrop {
+  z-index: 500 !important;
+}
+
+footer {
+  margin: auto;
+  color: #ffffff;
+}
