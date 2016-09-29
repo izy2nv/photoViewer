@@ -40,13 +40,13 @@
     </header>
     <div class="modal col-md-10 col-md-offset-1" ng-show="showModal">
       <div class="modal-body height-controller enable-zoom" id="modal-body">
-        <a class="left carousel-control" role="button" data-slide="prev" ng-click="displayPrevImg()">
+        <a class="left carousel-control" role="button" data-slide="prev" ng-click="displayPrevImg()" ng-hide="hidePrevGlyph">
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
         <img src = "https://farm{{selectedPhotoFarm}}.staticflickr.com/{{selectedPhotoServer}}/{{selectedPhotoId}}_{{selectedPhotoSecret}}.jpg"
         class="col-md-offset-3 modalPhoto" alt="Selected Photo" title="{{selectedPhotoTitle}}" id="{{selectedPhotoId}}"/>
-        <a class="right carousel-control" role="button" data-slide="next" ng-click="displayNextImg()">
+        <a class="right carousel-control" role="button" data-slide="next" ng-click="displayNextImg()" ng-hide="hideNextGlyph">
           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>

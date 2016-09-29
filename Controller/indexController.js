@@ -53,8 +53,10 @@
       for (var i = 0; i < returnedObj.length; i++) {
         if (modalImgId === returnedObj[i].id) {
           if (returnedObj[i-1] === undefined) {
+            $scope.hidePrevGlyph = true;
             return;
           } else {
+            $scope.hideNextGlyph = false;
             appendData(returnedObj[i-1].id, returnedObj[i-1].secret,
               returnedObj[i-1].farm,returnedObj[i-1].server);
           }
@@ -67,8 +69,10 @@
       for (var i = 0; i < returnedObj.length; i++) {
         if (modalImgId === returnedObj[i].id) {
           if (returnedObj[i+1] === undefined) {
+            $scope.hideNextGlyph = true;
             return;
           } else {
+            $scope.hidePrevGlyph = false;
             appendData(returnedObj[i+1].id, returnedObj[i+1].secret,
               returnedObj[i+1].farm,returnedObj[i+1].server);
           }
@@ -76,6 +80,8 @@
       }
     };
     $scope.closeImage = function() {
+      $scope.hideNextGlyph = false;
+      $scope.hidePrevGlyph = false;
       $scope.showModal = false;
     };
   });
