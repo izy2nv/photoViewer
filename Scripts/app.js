@@ -5,13 +5,19 @@ $( function() {
     changeMonth: true,
     changeYear: true,
     numberOfMonths: 1,
-    maxDate: new Date()
+    maxDate: new Date(),
+    onClose: function(selectedDate) {
+      $("#to").datepicker("option", "minDate", selectedDate);
+    }
   });
   to = $( "#to" ).datepicker({
     dateFormat:"yy-mm-dd",
     changeMonth: true,
     changeYear: true,
     numberOfMonths: 1,
-    maxDate: new Date()
+    maxDate: new Date(),
+    onClose: function(selectedDate) {
+      $("#to").datepicker("option", "maxDate", selectedDate);
+    }
   });
 });
