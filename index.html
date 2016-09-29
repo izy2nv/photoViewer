@@ -23,14 +23,14 @@
         <button ng-click="searchImg()">Search</button>
       </form>
       <div class="col-md-12 col-sm-12 dateSearchDiv" ng-show="showAllPhotos">
-        <div class="col-md-5 col-md-offset-3 col-sm-7 col-sm-offset-1">{{filter}}
+        <div class="col-md-5 col-md-offset-3 col-sm-9">{{filter}}
           <label for="Start Date"></label>
           <input type="text" id="from" ng-model="minDate" placeholder="{{minDateSearch}}" />
           <label for="End Date"></label>
           <input type="text" id="to" name="to" ng-model="maxDate" placeholder="{{maxDateSearch}}" />
           <button type="button" ng-click="filterByDate(minDate,maxDate)">Enter</button>
         </div>
-        <div class="col-md-2 col-sm-2 sortDiv">{{sort}}
+        <div class="col-md-2 col-sm-3 sortDiv">{{sort}}
           <select ng-model="sortOrder">
             <option value="server">Owner</option>
             <option value="title" ng-model="title">Title</option>
@@ -45,7 +45,7 @@
           <span class="sr-only">Previous</span>
         </a>
         <img src = "https://farm{{selectedPhotoFarm}}.staticflickr.com/{{selectedPhotoServer}}/{{selectedPhotoId}}_{{selectedPhotoSecret}}.jpg"
-        class="col-md-offset-3 modalPhoto" alt="Selected Photo" title="{{selectedPhotoTitle}}" id="{{selectedPhotoId}}"/>
+        class="col-md-offset-3 col-sm-offset-3 modalPhoto" alt="Selected Photo" title="{{selectedPhotoTitle}}" id="{{selectedPhotoId}}"/>
         <a class="right carousel-control" role="button" data-slide="next" ng-click="displayNextImg()" ng-hide="hideNextGlyph">
           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
