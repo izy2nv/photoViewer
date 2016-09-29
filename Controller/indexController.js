@@ -9,13 +9,20 @@
     $scope.preview = "Click to Preview";
     var returnedObj;
     var url;
+    function appendData(id, secret, farm, server, title) {
+      $scope.selectedPhotoId = id;
+      $scope.selectedPhotoSecret = secret;
+      $scope.selectedPhotoFarm = farm;
+      $scope.selectedPhotoServer = server;
+      $scope.selectedPhotoTitle = title;
+    }
     $scope.searchImg = function(param) {
       if ($scope.param === undefined) {
         return;
       } else {
         $scope.showAllPhotos = true;
         url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags="+$scope.param+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
-        httpCall.getDataQuery(url).then(function(response){
+        httpCall.getDataQuery(url).then(function(response) {
           $scope.returnedPhotos = response.photos.photo;
           returnedObj = response.photos.photo;
         });
@@ -35,11 +42,8 @@
       var selectedImg = $event.currentTarget.id;
       for (var i = 0; i < returnedObj.length; i++) {
         if (selectedImg === returnedObj[i].id) {
-          $scope.selectedPhotoId = returnedObj[i].id;
-          $scope.selectedPhotoSecret = returnedObj[i].secret;
-          $scope.selectedPhotoFarm = returnedObj[i].farm;
-          $scope.selectedPhotoServer = returnedObj[i].server;
-          $scope.selectedPhotoTitle = returnedObj[i].title;
+          appendData(returnedObj[i].id, returnedObj[i].secret, returnedObj[i]
+            .farm,returnedObj[i].server, returnedObj[i].title);
         }
       }
     };
@@ -48,10 +52,12 @@
       var modalImgId = modalImg[0].id;
       for (var i = 0; i < returnedObj.length; i++) {
         if (modalImgId === returnedObj[i].id) {
-          $scope.selectedPhotoId = returnedObj[i-1].id;
-          $scope.selectedPhotoSecret = returnedObj[i-1].secret;
-          $scope.selectedPhotoFarm = returnedObj[i-1].farm;
-          $scope.selectedPhotoServer = returnedObj[i-1].server;
+          if (returnedObj[i-1] === undefined) {
+            return;
+          } else {
+            appendData(returnedObj[i-1].id, returnedObj[i-1].secret,
+              returnedObj[i-1].farm,returnedObj[i-1].server);
+          }
         }
       }
     };
@@ -60,10 +66,12 @@
       var modalImgId = modalImg[0].id;
       for (var i = 0; i < returnedObj.length; i++) {
         if (modalImgId === returnedObj[i].id) {
-          $scope.selectedPhotoId = returnedObj[i+1].id;
-          $scope.selectedPhotoSecret = returnedObj[i+1].secret;
-          $scope.selectedPhotoFarm = returnedObj[i+1].farm;
-          $scope.selectedPhotoServer = returnedObj[i+1].server;
+          if (returnedObj[i+1] === undefined) {
+            return;
+          } else {
+            appendData(returnedObj[i+1].id, returnedObj[i+1].secret,
+              returnedObj[i+1].farm,returnedObj[i+1].server);
+          }
         }
       }
     };
