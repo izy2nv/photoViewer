@@ -7,7 +7,7 @@
     $scope.maxDateSearch = "To  YYYY-MM-DD";
     $scope.footerMsg = "All rights reserved.";
     $scope.preview = "Click to Preview";
-    var returnedObj, url;
+    var returnedObj, url, modalImg, modalImgId;
     function appendData(id, secret, farm, server, title) {
       $scope.selectedPhotoId = id;
       $scope.selectedPhotoSecret = secret;
@@ -15,6 +15,10 @@
       $scope.selectedPhotoServer = server;
       $scope.selectedPhotoTitle = title;
     }
+    $scope.getElementInModal = function () {
+      modalImg = document.getElementsByClassName("modalPhoto");
+      modalImgId = modalImg[0].id;
+    };
     $scope.searchImg = function(param) {
       if ($scope.param === undefined) {
         return;
@@ -47,8 +51,7 @@
       }
     };
     $scope.displayPrevImg = function() {
-      var modalImg = document.getElementsByClassName("modalPhoto");
-      var modalImgId = modalImg[0].id;
+      $scope.getElementInModal();
       for (var i = 0; i < returnedObj.length; i++) {
         if (modalImgId === returnedObj[i].id) {
           if (returnedObj[i-1] === undefined) {
@@ -63,8 +66,7 @@
       }
     };
     $scope.displayNextImg = function() {
-      var modalImg = document.getElementsByClassName("modalPhoto");
-      var modalImgId = modalImg[0].id;
+      $scope.getElementInModal();
       for (var i = 0; i < returnedObj.length; i++) {
         if (modalImgId === returnedObj[i].id) {
           if (returnedObj[i+1] === undefined) {
