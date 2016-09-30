@@ -7,8 +7,7 @@
     $scope.maxDateSearch = "To  YYYY-MM-DD";
     $scope.footerMsg = "All rights reserved.";
     $scope.preview = "Click to Preview";
-    var returnedObj;
-    var url;
+    var returnedObj, url;
     function appendData(id, secret, farm, server, title) {
       $scope.selectedPhotoId = id;
       $scope.selectedPhotoSecret = secret;
@@ -31,7 +30,7 @@
     $scope.filterByDate = function(minDate, maxDate) {
       $scope.minDate = minDate;
       $scope.maxDate = maxDate;
-      var url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags=all&min_taken_date="+$scope.minDate+"&max_taken_date="+$scope.maxDate+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
+      url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&tags=all&min_taken_date="+$scope.minDate+"&max_taken_date="+$scope.maxDate+"&api_key=9d81b59baba99f4f81947a17edc88751&jsoncallback=JSON_CALLBACK";
       httpCall.getDataQuery(url).then(function(response){
         $scope.returnedPhotos = response.photos.photo;
         returnedObj = response.photos.photo;
